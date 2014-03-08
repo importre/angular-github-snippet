@@ -1,0 +1,21 @@
+{
+  "name": "angular-github-snippet",
+  "version": "0.1.0",
+  "authors": [
+    "Jaewe Heo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-base64": "~2.0.1",
+    "angular-highlightjs": "~0.2.5",
+    "angular-mocks": "~1.2.14"
+  }
+}
