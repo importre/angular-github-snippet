@@ -1,6 +1,9 @@
 angular-github-snippet
 ======================
 
+Generates code snippet from Github repository.
+
+
 How to install
 --------------
 
@@ -21,11 +24,10 @@ $ grunt
 - See `./dist` directory
 
 
-Example
--------
+Example & Demo
+--------------
 
-See `example` directory.
-
+See `example` directory and [demo](http://importre.github.io/angular-github-snippet).
 
 Unit Test
 ---------
