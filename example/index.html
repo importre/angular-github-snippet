@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>angular-github-snippet sample</title>
+    <link rel="stylesheet"
+          href="../bower_components/highlightjs/styles/tomorrow-night.css">
+
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
+    <script src="../bower_components/angular-base64/angular-base64.min.js"></script>
+    <script src="../bower_components/highlightjs/highlight.pack.js"></script>
+    <script src="../dist/angular-github-snippet.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="appCtrl">
+
+<h1>{{ title }}</h1>
+
+<div>
+    <h3>{{ subTitle1 }}</h3>
+    <hr/>
+    <ghsnip code="{{ examSrc }}">
+    </ghsnip>
+</div>
+
+<div>
+    <h3>{{ subTitle2 }}</h3>
+    <hr/>
+    <ghsnip code="{{ examSrc }}"
+            lines="{{ lines }}">
+    </ghsnip>
+</div>
+
+</body>
+</html>
