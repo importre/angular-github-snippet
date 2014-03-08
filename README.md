@@ -1,6 +1,8 @@
 angular-github-snippet
 ======================
 
+[![Build Status](https://drone.io/github.com/importre/angular-github-snippet/status.png)](https://drone.io/github.com/importre/angular-github-snippet/latest)
+
 Generates code snippet from Github repository.
 
 
