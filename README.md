@@ -27,7 +27,7 @@ $ grunt
 Example & Demo
 --------------
 
-See `example` directory and [demo](http://importre.github.io/angular-github-snippet)
+See `example` directory and [demo](http://importre.github.io/angular-github-snippet).
 
 Unit Test
 ---------
