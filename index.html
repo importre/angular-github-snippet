@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 
   <head>
     <meta charset='utf-8' />
@@ -7,11 +7,19 @@
     <meta name="description" content="angular-github-snippet : " />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="stylesheets/tomorrow-night.css">
+
+    <script src="javascripts/angular.min.js"></script>
+    <script src="javascripts/angular-highlightjs.min.js"></script>
+    <script src="javascripts/angular-base64.min.js"></script>
+    <script src="javascripts/highlight.pack.js"></script>
+    <script src="javascripts/angular-github-snippet.min.js"></script>
+    <script src="javascripts/app.js"></script>
 
     <title>angular-github-snippet</title>
   </head>
 
-  <body>
+  <body ng-controller="appCtrl">
 
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
@@ -31,8 +39,19 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>
-<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h1>
+        <h1>{{ title }}</h1>
+
+        <div>
+          <h3>{{ subTitle1 }}</h3>
+          <hr/>
+          <ghsnip code="{{ examSrc }}"></ghsnip>
+        </div>
+
+        <div>
+          <h3>{{ subTitle2 }}</h3>
+          <hr/>
+          <ghsnip code="{{ examSrc }}"lines="{{ lines }}"></ghsnip>
+        </div>
       </section>
     </div>
 
