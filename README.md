@@ -1,6 +1,9 @@
 angular-github-snippet
 ======================
 
+Generates code snippet from Github repository.
+
+
 How to install
 --------------
 
