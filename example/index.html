@@ -4,6 +4,7 @@
     <title>angular-github-snippet sample</title>
     <link rel="stylesheet"
           href="../bower_components/highlightjs/styles/tomorrow-night.css">
+    <link rel="stylesheet" href="../dist/angular-github-snippet.css">
 
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
@@ -20,16 +21,13 @@
 <div>
     <h3>{{ subTitle1 }}</h3>
     <hr/>
-    <ghsnip code="{{ examSrc }}">
-    </ghsnip>
+    <ghsnip code="{{ examSrc }}"></ghsnip>
 </div>
 
 <div>
     <h3>{{ subTitle2 }}</h3>
     <hr/>
-    <ghsnip code="{{ examSrc }}"
-            lines="{{ lines }}">
-    </ghsnip>
+    <ghsnip code="{{ examSrc }}" lines="{{ lines }}"></ghsnip>
 </div>
 
 </body>
