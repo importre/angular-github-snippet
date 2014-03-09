@@ -20,12 +20,24 @@ module.exports = function (grunt) {
           'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
         }
       }
+    },
+    copy: {
+      dist: {
+        files: [
+          {
+            cwd: '.',
+            dot: false,
+            src: ['src/css/angular-github-snippet.css'],
+            dest: 'dist/angular-github-snippet.css'
+          }
+        ]
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['concat', 'uglify']);
-
+  grunt.registerTask('default', ['concat', 'copy', 'uglify']);
 };
