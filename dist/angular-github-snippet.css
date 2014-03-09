@@ -1,0 +1,25 @@
+.code {
+    border: 1px solid #000000;
+}
+
+.code h3 {
+    margin: 0;
+    padding: 0.5em;
+    background: #1d1f21;
+    color: #c5c8c6;
+}
+
+.code a {
+    color: #c5c8c6;
+    text-decoration: none;
+}
+
+.code a:hover {
+    color: #c5c8c6;
+    text-decoration: underline;
+}
+
+.code pre, hr, code {
+    margin: 0;
+    padding: 0;
+}
