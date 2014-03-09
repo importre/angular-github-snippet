@@ -7,7 +7,8 @@ var ghsnip = angular.module("ghsnip", ["hljs", "base64"]);
 ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
   function ($http, $base64, $compile) {
 
-    this.getCodeHtml = function (code, lines) {
+    this.getCodeHtml = function (data, lines) {
+      var code = data.content;
       var i, currNum;
       var contents = code.split("\n");
       for (i = 0; i < contents.length; i++) {
@@ -32,7 +33,16 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
         newContents[num++] = contents[currNum - 1];
         prevNum = currNum;
       }
-      return "<div hljs>" + newContents.join(" \n") + "</div>";
+
+      console.log(data);
+      var html = "<div class='code'>" +
+        "<h3><a href='" + data.html_url + "' target='_blank'>" +
+        data.path +
+        "</a></h3>" +
+        "<hr/>" +
+        "<div hljs>" + newContents.join(" \n") + "</div>" +
+        "</div>"
+      return html;
     };
 
     /**
@@ -56,7 +66,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
             lines = attr.lines;
           }
           lines = scope.parseLines(lines);
-          var html = this.getCodeHtml(data.content, lines);
+          var html = this.getCodeHtml(data, lines);
           var newElement = $compile(html)(scope);
           element.replaceWith(newElement);
         }).
@@ -76,7 +86,8 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
       }
     };
   }]
-);
+)
+;
 
 ghsnip.controller("ghsnipCtrl", ["$scope",
   function ($scope) {
