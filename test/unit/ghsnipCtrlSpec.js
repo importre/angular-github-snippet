@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-describe('ghsnip', function () {
+describe("ghsnip", function () {
   var scope, ctrl;
 
-  beforeEach(module('ghsnip'));
+  beforeEach(module("ghsnip"));
 
   beforeEach(inject(function ($controller) {
     scope = {};
-    ctrl = $controller('ghsnipCtrl', {$scope: scope});
+    ctrl = $controller("ghsnipCtrl", {$scope: scope});
   }));
 
   it("should not be able to parse lines", function () {

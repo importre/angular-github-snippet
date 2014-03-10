@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function (grunt) {
 
   grunt.initConfig({
@@ -21,6 +23,28 @@ module.exports = function (grunt) {
         }
       }
     },
+    jshint: {
+      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+      options: {
+        // options here to override JSHint defaults
+        globalstrict: true,
+        globals: {
+          jQuery: true,
+          console: true,
+          module: true,
+          document: true,
+          "angular": true,
+          "after": true,
+          "afterEach": true,
+          "before": true,
+          "beforeEach": true,
+          "describe": true,
+          "expect": true,
+          "inject": true,
+          "it": true
+        }
+      }
+    },
     copy: {
       dist: {
         files: [
@@ -36,8 +60,9 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['concat', 'copy', 'uglify']);
+  grunt.registerTask('default', ['concat', 'jshint', 'copy', 'uglify']);
 };

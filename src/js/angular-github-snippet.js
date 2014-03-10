@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-'use strict';
+"use strict";
 
 var ghsnip = angular.module("ghsnip", ["hljs", "base64"]);
 
@@ -32,7 +32,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
         "</a></h3>" +
         "<hr/>" +
         "<div hljs>" + newContents.join(" \n") + "</div>" +
-        "</div>"
+        "</div>";
       return html;
     }
 
@@ -84,7 +84,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
         error(function (data, status, headers, config) {
           element.html(data.message);
         });
-    };
+    }
 
     return {
       restrict: "E",
