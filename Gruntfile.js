@@ -15,7 +15,7 @@ module.exports = function (grunt) {
     },
     uglify: {
       options: {
-        banner: '// <%= pkg.name %> v<%= pkg.version %> (<%= grunt.template.today("yyyy.mm.dd") %>)\n// Copyright (c) 2014, Jaewe Heo. All rights reserved.\n// Use of this source code is governed by a BSD-style\n// license that can be found in the LICENSE file.\n'
+        banner: '// <%= pkg.name %> <%= pkg.version %>\n// Copyright (c) 2014, Jaewe Heo. All rights reserved.\n// Use of this source code is governed by a BSD-style\n// license that can be found in the LICENSE file.\n'
       },
       dist: {
         files: {
