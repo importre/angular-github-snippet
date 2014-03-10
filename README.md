@@ -29,7 +29,7 @@ $ grunt
 Example & Demo
 --------------
 
-See [`example`][example] directory and [`demo`][demo].
+See [`tutorial`][tutorial].
 
 Unit Test
 ---------
@@ -45,4 +45,4 @@ License
 BSD. See [`LICENSE`](LICENSE) file.
 
 [example]: https://github.com/importre/angular-github-snippet/tree/master/example
-[demo]: http://importre.github.io/angular-github-snippet
+[tutorial]: http://importre.github.io/angular-github-snippet
