@@ -26,7 +26,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
     }
 
     function makeHtml(data, newContents) {
-      var html = "<div class='code'>" +
+      var html = "<div>" +
         "<h3><a href='" + data.html_url + "' target='_blank'>" +
         data.path +
         "</a></h3>" +
