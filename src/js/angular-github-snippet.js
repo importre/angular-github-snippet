@@ -70,7 +70,14 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
       var html = "<div>loading...</div>";
       element.html(html);
 
-      $http({method: "GET", url: attr.code}).
+      var apiUrl = scope.getGithubApiUrl(attr.code);
+      if (apiUrl === null) {
+        html = "<div>Should be a file url.</div>";
+        element.html(html);
+        return;
+      }
+
+      $http({method: "GET", url: apiUrl}).
         success(function (data, status, headers, config) {
           var lines = null;
           if (attr.hasOwnProperty("lines")) {
@@ -146,6 +153,27 @@ ghsnip.controller("ghsnipCtrl", ["$scope",
       });
 
       return data;
+    };
+
+    $scope.getGithubApiUrl = function (url) {
+      if (url) {
+        // already github api url
+        if (url.indexOf("api.github.com/") >= 0) {
+          return url;
+        }
+
+        // do not change if it's not blob
+        if (url.indexOf("github.com/") < 0 || url.indexOf("/blob/") < 0) {
+          return null;
+        }
+
+        url = url.replace("github.com/", "api.github.com/repos/");
+        url = url.replace("\/blob\/", "\/contents\/");
+        url = url.replace(/(.+?)\/contents\/([^\/]+)(.+)/, function (all, pre, ref, post) {
+          return pre + "/contents" + post + "?ref=" + ref;
+        });
+      }
+      return url;
     };
   }]
 );
