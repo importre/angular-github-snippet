@@ -1,3 +1,7 @@
+pre, code {
+    overflow: hidden;
+}
+
 .ghsnip {
     border: 1px solid #000000;
 }
@@ -19,7 +23,11 @@
     text-decoration: underline;
 }
 
-.ghsnip pre, hr, code {
+.ghsnip hr, pre, code {
     margin: 0;
     padding: 0;
+}
+
+.ghsnip > pre, code {
+    overflow: auto;
 }
