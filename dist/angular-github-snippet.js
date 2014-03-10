@@ -2,14 +2,43 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+'use strict';
+
 var ghsnip = angular.module("ghsnip", ["hljs", "base64"]);
 
 ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
   function ($http, $base64, $compile) {
 
-    this.getCodeHtml = function (data, lines) {
+    function getNewContents(lines, contents) {
+      var newContents = [];
+      var num = 0;
+      var prevNum = -1;
+      var currNum;
+      for (var i = 0; i < lines.length && i < contents.length; i++) {
+        currNum = lines[i];
+        if (prevNum >= 0 && currNum - prevNum != 1) {
+          newContents[num++] = " \n\t...omitted...\n";
+        }
+        newContents[num++] = contents[currNum - 1];
+        prevNum = currNum;
+      }
+      return newContents;
+    }
+
+    function makeHtml(data, newContents) {
+      var html = "<div class='code'>" +
+        "<h3><a href='" + data.html_url + "' target='_blank'>" +
+        data.path +
+        "</a></h3>" +
+        "<hr/>" +
+        "<div hljs>" + newContents.join(" \n") + "</div>" +
+        "</div>"
+      return html;
+    }
+
+    function getCodeHtml(data, lines) {
       var code = data.content;
-      var i, currNum;
+      var i;
       var contents = code.split("\n");
       for (i = 0; i < contents.length; i++) {
         contents[i] = $base64.decode(contents[i]);
@@ -22,28 +51,10 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
         }
       }
 
-      var newContents = [];
-      var num = 0;
-      var prevNum = -1;
-      for (i = 0; i < lines.length && i < contents.length; i++) {
-        currNum = lines[i];
-        if (prevNum >= 0 && currNum - prevNum != 1) {
-          newContents[num++] = " \n\t...omitted...\n";
-        }
-        newContents[num++] = contents[currNum - 1];
-        prevNum = currNum;
-      }
-
-      console.log(data);
-      var html = "<div class='code'>" +
-        "<h3><a href='" + data.html_url + "' target='_blank'>" +
-        data.path +
-        "</a></h3>" +
-        "<hr/>" +
-        "<div hljs>" + newContents.join(" \n") + "</div>" +
-        "</div>"
+      var newContents = getNewContents(lines, contents);
+      var html = makeHtml(data, newContents);
       return html;
-    };
+    }
 
     /**
      * loads github code snippet
@@ -51,7 +62,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
      * @param element
      * @param attr
      */
-    this.loadSnippet = function (scope, element, attr) {
+    function loadSnippet(scope, element, attr) {
       if (!attr.hasOwnProperty("code")) {
         return;
       }
@@ -66,7 +77,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
             lines = attr.lines;
           }
           lines = scope.parseLines(lines);
-          var html = this.getCodeHtml(data, lines);
+          var html = getCodeHtml(data, lines);
           var newElement = $compile(html)(scope);
           element.replaceWith(newElement);
         }).
@@ -81,13 +92,12 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
       template: "<div ng-bind-html=\"code\"></div>",
       compile: function compile(tElement, tAttrs, transclude) {
         return function postLink(scope, iElement, iAttrs) {
-          this.loadSnippet(scope, iElement, iAttrs);
+          loadSnippet(scope, iElement, iAttrs);
         };
       }
     };
   }]
-)
-;
+);
 
 ghsnip.controller("ghsnipCtrl", ["$scope",
   function ($scope) {
