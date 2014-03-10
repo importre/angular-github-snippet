@@ -25,18 +25,22 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
       return newContents;
     }
 
-    function makeHtml(data, newContents) {
+    function makeHtml(data, newContents, language) {
+      var lang = "";
+      if (language) {
+        lang = "lang=\"" + language + "\"";
+      }
       var html = "<div class=\"ghsnip\">" +
         "<h3><a href='" + data.html_url + "' target='_blank'>" +
         data.path +
         "</a></h3>" +
         "<hr/>" +
-        "<div hljs>" + newContents.join(" \n") + "</div>" +
+        "<div hljs " + lang + ">" + newContents.join(" \n") + "</div>" +
         "</div>";
       return html;
     }
 
-    function getCodeHtml(data, lines) {
+    function getCodeHtml(data, lines, language) {
       var code = data.content;
       var i;
       var contents = code.split("\n");
@@ -52,7 +56,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
       }
 
       var newContents = getNewContents(lines, contents);
-      var html = makeHtml(data, newContents);
+      var html = makeHtml(data, newContents, language);
       return html;
     }
 
@@ -84,7 +88,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
             lines = attr.lines;
           }
           lines = scope.parseLines(lines);
-          var html = getCodeHtml(data, lines);
+          var html = getCodeHtml(data, lines, attr.language);
           var newElement = $compile(html)(scope);
           element.replaceWith(newElement);
         }).
