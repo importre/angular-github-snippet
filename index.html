@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="stylesheets/angular-github-snippet.css">
 
     <!--
-    Add angular, angular-highlightjs, angular-base64, highlightjs
+    Add angular, angular-highlightjs, angular-base6 highlightjs
     and angular-github-snippet script.
     -->
     <script src="javascripts/angular.min.js"></script>
@@ -58,31 +58,59 @@
 <!-- MAIN CONTENT -->
 <div id="main_content_wrap" class="outer">
     <section id="main_content" class="inner">
-        <h1>{{ title }}</h1>
+        <h1>Tutorial</h1>
 
         <div>
-            <h3>{{ subTitle1 }}</h3>
+            <h3>1. Set stylesheets</h3>
             <hr/>
             <!--
             Load your github code snippet using ghsnip element and code attribute.
             -->
-            <ghsnip code="{{ examSrc }}"></ghsnip>
+            <ghsnip code="{{ code }}" lines="11:15"></ghsnip>
         </div>
 
         <div>
-            <h3>{{ subTitle2 }}</h3>
+            <h3>2. Set javascripts</h3>
             <hr/>
             <!--
             If you want to show your code partially, use lines attribute.
 
             # examples
             1. "1, 2, 3"
-            2. "1:10" -> "1, 2, 3, 4, 5, 6, 7, 8, 9, 10"
+            2. "1:10" -> "1, 2, 3,  5, 6, 7, 8, 9, 10"
             3. "1:3, 5, 6, 10:12" -> "1, 2, 3, 5, 6, 10, 11, 12"
 
             If the line number is not continuous, "...omitted..." will be inserted automatically.
             -->
-            <ghsnip code="{{ examSrc }}" lines="{{ lines }}"></ghsnip>
+            <ghsnip code="{{ code }}" lines="17:25"></ghsnip>
+        </div>
+
+        <div>
+            <h3>3. Set your angular app</h3>
+            <hr/>
+            <ghsnip code="{{ code }}" lines="27:30"></ghsnip>
+        </div>
+
+        <div>
+            <h3>4. Load your github code snippet</h3>
+            <hr/>
+            <ghsnip code="{{ code }}" lines="66:69"></ghsnip>
+        </div>
+
+        <div>
+            <h3>5. Load your github code snippet</h3>
+            <h4>using <i>lines</i> attribute</h4>
+            <hr/>
+            <ghsnip code="{{ code }}" lines="75:85"></ghsnip>
+        </div>
+
+        <div>
+            <h3>How to work code attribute of &lt;ghsnip&gt; element</h3>
+            <hr/>
+            <p>
+                If you set code attribute to blob url from github, it will be replaced with github api url automatically.
+                If the result isn't what you want, you have to add github api url directly to code attribute.
+            </p>
         </div>
     </section>
 </div>
