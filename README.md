@@ -31,10 +31,10 @@ $ grunt
 - See `./dist` directory
 
 
-Example & Demo
---------------
+Demo (Tutorial)
+---------------
 
-See [`tutorial`][tutorial].
+See the demo with [`tutorial`][tutorial].
 
 Unit Test
 ---------
