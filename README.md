@@ -9,7 +9,10 @@ Generates code snippet from Github repository.
 How to install
 --------------
 
-TBD.
+```sh
+$ npm install -g bower # if bower is not installed
+$ bower install angular-github-snippet
+```
 
 
 How to build
@@ -17,12 +20,14 @@ How to build
 
 - Install node.js
 - Install bower, grunt, karma
+
 ```sh
 $ npm install -g bower grunt-cli karma
 $ bower install
 $ npm install
 $ grunt
 ```
+
 - See `./dist` directory
 
 
