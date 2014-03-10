@@ -88,7 +88,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
             lines = attr.lines;
           }
           lines = scope.parseLines(lines);
-          var html = getCodeHtml(data, lines, attr.language);
+          var html = getCodeHtml(data, lines, attr.lang);
           var newElement = $compile(html)(scope);
           element.replaceWith(newElement);
         }).
