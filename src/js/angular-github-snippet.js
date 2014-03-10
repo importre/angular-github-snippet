@@ -89,7 +89,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
     return {
       restrict: "E",
       controller: "ghsnipCtrl",
-      template: "<div ng-bind-html=\"code\"></div>",
+      template: "<div></div>",
       compile: function compile(tElement, tAttrs, transclude) {
         return function postLink(scope, iElement, iAttrs) {
           loadSnippet(scope, iElement, iAttrs);
