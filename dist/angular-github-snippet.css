@@ -1,0 +1,33 @@
+pre, code {
+    overflow: hidden;
+}
+
+.ghsnip {
+    border: 1px solid #000000;
+}
+
+.ghsnip h3 {
+    margin: 0;
+    padding: 0.5em;
+    background: #1d1f21;
+    color: #c5c8c6;
+}
+
+.ghsnip a {
+    color: #c5c8c6;
+    text-decoration: none;
+}
+
+.ghsnip a:hover {
+    color: #c5c8c6;
+    text-decoration: underline;
+}
+
+.ghsnip hr, pre, code {
+    margin: 0;
+    padding: 0;
+}
+
+.ghsnip > pre, code {
+    overflow: auto;
+}
