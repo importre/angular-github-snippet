@@ -1,17 +1,19 @@
 {
   "name": "angular-github-snippet",
   "version": "0.1.0",
+  "description": "Generates code snippet from Github repository.",
+  "main": "src/js/angular-github-snippet.js",
   "authors": [
-    "Jaewe Heo"
+    "Jaewe Heo <importre@icloud.com>"
   ],
   "license": "BSD",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "app/bower_components",
-    "test",
-    "tests"
+    "test/",
+    ".bowerrc",
+    ".gitignore",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.json"
   ],
   "dependencies": {
     "angular-base64": "~2.0.1",
