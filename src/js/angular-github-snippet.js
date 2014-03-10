@@ -72,7 +72,7 @@ ghsnip.directive("ghsnip", ["$http", "$base64", "$compile",
 
       var apiUrl = scope.getGithubApiUrl(attr.code);
       if (apiUrl === null) {
-        html = "<div>Should be a file url.</div>";
+        html = "<div>Should be a file url.<br/>" + attr.code + "</div>";
         element.html(html);
         return;
       }
