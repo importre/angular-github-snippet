@@ -1,25 +1,25 @@
-.code {
+.ghsnip {
     border: 1px solid #000000;
 }
 
-.code h3 {
+.ghsnip h3 {
     margin: 0;
     padding: 0.5em;
     background: #1d1f21;
     color: #c5c8c6;
 }
 
-.code a {
+.ghsnip a {
     color: #c5c8c6;
     text-decoration: none;
 }
 
-.code a:hover {
+.ghsnip a:hover {
     color: #c5c8c6;
     text-decoration: underline;
 }
 
-.code pre, hr, code {
+.ghsnip pre, hr, code {
     margin: 0;
     padding: 0;
 }
